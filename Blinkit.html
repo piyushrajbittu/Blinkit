@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Blinkit clone</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="media.css">
+</head>
+<body>
+	<header>
+		<div class="headerleft">
+			<div class="logo">
+				<a href="#">
+				<img src="data:image/png;base64,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 ">
+			</a>
+			</div>
+			<div class="headeraddress">
+				<h3>Delivery in 8 minutes</h3>
+				<p>Patna Junction, Fraser Road Area.....</p>
+				
+
+			</div>
+		</div>
+		<form class="searchbox">
+			<button><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+			<input type="text">
+		</form>
+		<div class="headerbtn">
+			<button>Login</button>
+			<button><i class="fa-solid fa-cart-arrow-down"></i> My Cart</button>
+		</div>
+
+	</header>
+	<section class="bannersection">
+		<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=2700/layout-engine/2026-01/Frame-1437256605-2-2.jpg">
+	</section>
+	<section class="orderbanner">
+		<div class="orderbanneritem">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=720/layout-engine/2023-07/pharmacy-WEB.jpg">
+		</div>
+		<div class="orderbanneritem">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=720/layout-engine/2026-01/pet_crystal_WEB-1.png">
+		</div>
+		<div class="orderbanneritem">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=720/layout-engine/2026-01/baby_crystal_WEB-1.png">
+		</div>
+	</section>
+	<section class="categorysection">
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-12/paan-corner_web.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-2_10.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-3_9.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-4_9.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-5_4.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-6_5.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-7_3.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-8_4.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2025-11/Slice-7-1_0.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-10.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-11.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-12.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-13.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-14.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-15.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-16.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-17.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-18.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-19.png">
+		</div>
+		<div class="categoryitems">
+			<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-20.png">
+		</div>
+	</section>
+	<section class="productsection">
+		<div class="headingrow">
+			<h2>Dairy, Bread & Eggs</h2>
+			<a>see all</a>
+		</div>
+		<div class="productrow">
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/628c97e0-5ed4-425d-a667-1d3bfa6f0bde.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Amul Gold Full Cream Milk</h3>
+					<p>500 ml</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 35</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/9802a44f-94cd-4cb6-9078-72497a73f008.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Moreish Brown Bread</h3>
+					<p>400 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 45</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/1f1a15af-1c74-460b-81eb-9fecf9bbda7e.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Moreish Classic White Bread</h3>
+					<p>400 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 40</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1770981407245-4.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Amul Cow Milk</h3>
+					<p>500 ml</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 30</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/126a1695-7a74-4423-90cf-8e02251d9f15.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Amul Masti Set Cup Curd Tub</h3>
+					<p>1 kg</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 115</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/3af56c86-9a93-4d0c-a8d5-cf38493e4120.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="7px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Amul Masti Pouch Curd</h3>
+					<p>1 kg</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 80</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	<section class="productsection">
+		<div class="headingrow">
+			<h2>Rolling paper & tobacco</h2>
+			<a>see all</a>
+		</div>
+		<div class="productrow">
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1774357330113-155.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Perfect Rolled Cones (Natural) - Bongchie</h3>
+					<p>3 pcs</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 45</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/0f8ebd88-7b67-4542-bda1-87f8182d767d.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Ultimate Rolling Paper With Filter Tips</h3>
+					<p>32 pcs</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 90</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/8d385b40-e78b-434a-962d-50ba667891bf.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Thiins Pre-Rolled Rolling Paper-LIT</h3>
+					<p>1 Pack</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 25</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1770637399754-340.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Perfect Rolling Paper (Pink) -Bongchie</h3>
+					<p>3 Pack</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 45</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/11cff76d-e1f4-45ad-85bd-b9c5e0539357.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Dollar Pre-rolled Rolling Paper-Bongchie</h3>
+					<p>3 pcs</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 60</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/4b1a2707-8fe8-4c5d-99c9-753c41372656.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="7px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Dollar Pre-rolled Rolling Paper-Bongchie</h3>
+					<p>3 pcs</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 60</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		
+	</section>
+
+
+	<section class="productsection">
+		<div class="headingrow">
+			<h2>Hookah</h2>
+			<a>see all</a>
+		</div>
+		<div class="productrow">
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/ac378177-2f17-4dd8-b885-965ef83c24dd.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Coconut Shell Hookah Coal By Cocoyaya</h3>
+					<p>250 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 180</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/55cbc96f-5555-47f4-9b17-67e15a255875.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Instant Ignite Magic Coal By Bongchie</h3>
+					<p>10 pcs</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 80</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/043e45a9-9258-47a3-b1d8-7ce3f962f919.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Coconut Hookah Coal by Bongchie</h3>
+					<p>250 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 125</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/87e34db4-0d40-4aa5-9b7f-11a2e98c61c2.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Pre-Cut Hookah Foil by Cocoyaya</h3>
+					<p>25 pcs</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 100</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/da5b29c2-2a2b-4a87-af9b-f9feeb8d724d.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Chief Commissioner Herbal Hookah Flavor</h3>
+					<p>50 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 100</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/c4ae0b90-a4d4-4e83-8ac2-d13b34aff09f.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="7px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Mouthpiece Hookah Pipe by Cocoyaya</h3>
+					<p>40 pcs</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 100</b>
+						<button>Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="productsection">
+		<div class="headingrow">
+			<h2>Snacks & Munchies</h2>
+			<a>see all</a>
+		</div>
+		<div class="productrow">
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1776829632782-895.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Red Rock Deli Kettle Chips (Basil Thai)...</h3>
+					<p>58 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 51</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/2a55bb8b-bf09-454b-9233-cc00404c6a5c.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Beanly Choco Hazelnut Spread With Breadsticks</h3>
+					<p>52 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 99</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1776829632782-894.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Red Rock Deli Baked Chips (Greek Salad)..</h3>
+					<p>53 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 51</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1778155506794-644.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Too Yumm Cheese Balls Puffs (No Palm Oil)</h3>
+					<p>40 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 32</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/11cff76d-e1f4-45ad-85bd-b9c5e0539357.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Dollar Pre-rolled Rolling Paper-Bongchie</h3>
+					<p>3 pcs</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 60</b>
+						<button>Add</button>
+					</div>
+				</div>
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1773492424994-656.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Crax Truffle Fries (Black Truffle & Parmensan...</h3>
+					<p>55 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 48</b>
+						<button>Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="productsection">
+		<div class="headingrow">
+			<h2>Mouth fresheners</h2>
+			<a>see all</a>
+		</div>
+		<div class="productrow">
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/de6cc2fb-de87-4112-a89e-cf7c263e2e3e.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>GO Desi Popz Tangy Imli Lollipop Candy</h3>
+					<p>8 pcs</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 50</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/bbe6e824-7332-4f55-aaf0-2e13d4057c63.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Pass Pass Sweet Magic Mix Mouth Fresher</h3>
+					<p>115 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 105</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/f07b45f7-f449-4aa7-802e-3a8464700e48.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Impact Sugar Free Mint Candies</h3>
+					<p>14 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 150</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/a8b16dad-42a4-4f24-b5c9-13fb0ca62492.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Go Desi Meetha Paan Desi Mints</h3>
+					<p>60 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 80</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/8a165649-9050-491d-b77f-2e652f5f47e4.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Rajnigandha Silver Pearl Silver Coated Elaichi</h3>
+					<p>5.75 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 60</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/d37286d5-2122-4fe2-97fa-5a809e8f7d6f.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="14px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Chandan Mint Saunf Mouth Freshener</h3>
+					<p>100 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 50</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		
+	</section>
+
+
+	<section class="productsection">
+		<div class="headingrow">
+			<h2>Cold Drinks & Juices</h2>
+			<a>see all</a>
+		</div>
+		<div class="productrow">
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1770356946958-165.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Coca-Cola Diet Coke Soft Drink</h3>
+					<p>300 ml</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 40</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1770356946958-58.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Thums Up Soft Drink</h3>
+					<p>700 ml</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 35</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/50e71b2f-e11f-4f53-88bb-9bf22756e13c.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Ice Cubes By Dras Ice</h3>
+					<p>1 Kg</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 75</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1772682797673-127.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Sprite Lime Flavored Soft Drink</h3>
+					<p>750 ml</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 35</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/76a28c0d-0821-40a3-9e5f-8f073ddc5694.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Amul Masti Spiced Salted Buttermilk</h3>
+					<p>200 ml</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 15</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/52e0560a-de7b-4d27-b57a-c6bcf22945ec.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="7px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Bisleri Packaged Water</h3>
+					<p>5 ltr</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 65</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		
+	</section>
+
+
+	<section class="productsection">
+		<div class="headingrow">
+			<h2>Candies & Gums</h2>
+			<a>see all</a>
+		</div>
+		<div class="productrow">
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/50e316ae-2ac9-46ed-8967-89ada49b06fd.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Pulse Kachcha Aam / Mango Candy</h3>
+					<p>202.5 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 57</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1780298794907-267.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Happydent Wave Sugarfree Mint</h3>
+					<p>30.6 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 48</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1775188419700-135.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Orbit Spearmint Flavour Sugar Free Chewing..</h3>
+					<p>19.8 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 45</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/e0034aac-565c-4736-8224-f1ff6f8e26ec.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Pulse Golmal Imli Candy</h3>
+					<p>175 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 48</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1773373870128-378.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="15px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Chupa Chups Sour Bites Mixed Fruits Sour Candy</h3>
+					<p>61.6 g</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 34</b>
+						<button>Add</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="productitems">
+				<div class="productimg">
+					<img width="70%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/7420f5a7-bd7b-4c2b-929f-d6034bb254a0.png">
+					<p><img class="tw-h-full tw-w-full tw-transition-opacity tw-opacity-100" width="100%" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" data-pf="reset" style="transform: scale(1);" width="25px" height="14px">8 Mins</p>
+				</div>
+				<div class="productcontent">
+					<h3>Dollar Pre-rolled Rolling Paper-Bongchie</h3>
+					<p>3 pcs</p>
+					<div class="btn-price-outer">
+						<b>&#8377; 60</b>
+						<button>Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="footer-mid">
+			<div class="footer-mid-row1">
+				<div class="footer-mid-row1-left">
+					<h3>Useful Links</h3>
+					<div class="usefulllinks">
+						<ul>
+							<li><a href="">Blog</a></li>
+							<li><a href="">Privacy</a></li>
+							<li><a href="">Terms</a></li>
+							<li><a href="">FAQs</a></li>
+							<li><a href="">Security</a></li>
+							<li><a href="">contact</a></li>
+						</ul>
+						<ul>
+							<li><a href="">Partner</a></li>
+							<li><a href="">Franchise</a></li>
+							<li><a href="">Seller</a></li>
+							<li><a href="">Warehouse</a></li>
+							<li><a href="">Deliver</a></li>
+							<li><a href="">Resources</a></li>
+						</ul>
+						<ul>
+							<li><a href="">Recipes</a></li>
+							<li><a href="">Bistro</a></li>
+							<li><a href="">District</a></li>
+							<li><a href="">Blinkit Ambulance</a></li>
+						</ul>
+
+					</div>
+				</div>
+				<div class="footer-mid-row1-right">
+					<div class="categoriesheadingrow">
+						<h3>Categories</h3>
+						<a href="">See all</a>
+					</div>
+					<div class="usefulllinks">
+						<ul>
+							<li><a href="">Vegetable & Fruits</a></li>
+							<li><a href="">Cold Drinks & Juices</a></li>
+							<li><a href="">Bakery & Biscuits</a></li>
+							<li><a href="">Dry Fruits,Masala & Oil</a></li>
+							<li><a href="">Paan Corner</a></li>
+							<li><a href="">Pharma & Wellness</a></li>
+							<li><a href="">Personal Care</a></li>
+							<li><a href="">Magazines</a></li>
+							<li><a href="">Electronics & Electricals</a></li>
+							<li><a href="">Toys & Games</a></li>
+							<li><a href="">Rakhi Gifts</a></li>
+						</ul>
+						<ul>
+							<li><a href="">Dairy & Breakfast</a></li>
+							<li><a href="">Instant & Frozen Food</a></li>
+							<li><a href="">Sweet Tooth</a></li>
+							<li><a href="">Sauces & Spreads</a></li>
+							<li><a href="">Organic & Premium</a></li>
+							<li><a href="">Cleaning Essentials</a></li>
+							<li><a href="">Pet Care</a></li>
+							<li><a href="">Kitchen & Dining</a></li>
+							<li><a href="">Stationery Needs</a></li>
+							<li><a href="">Print Store</a></li>
+						</ul>
+						<ul>
+							<li><a href="">Munchies</a></li>
+							<li><a href="">Atta, Rice & Dal</a></li>
+							<li><a href="">Chicken , Meat & Fish</a></li>
+							<li><a href="">Baby Care</a></li>
+							<li><a href="">Home Furnishing & Decor</a></li>
+							<li><a href="">Beauty & Cosmetics</a></li>
+							<li><a href="">Fashion & Accessories</a></li>
+							<li><a href="">Books</a></li>
+							<li><a href="">E-gift Cards</a></li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+			<div class="footer-mid-row2">
+				<p>© Blink Commerce Private Limited, 2016-2026</p>
+				<div class="appicons">
+					<h5>Download App</h5>
+					<img width="100px" src="https://blinkit.com/d61019073b700ca49d22.png">
+					<img width="100px" src="https://blinkit.com/8ed033800ea38f24c4f0.png">
+				</div>
+				<div class="sociallink">
+					<i class="fa-brands fa-facebook"></i>
+					<i class="fa-brands fa-instagram"></i>
+					<i class="fa-brands fa-linkedin"></i>
+					<i class="fa-brands fa-threads"></i>
+					<i class="fa-brands fa-square-twitter"></i>
+				</div>
+			</div>
+			<div class="footer-mid-row3">
+				<p>“Blinkit” is owned & managed by "Blink Commerce Private Limited" and is not related, linked or interconnected in whatsoever manner or nature, to “GROFFR.COM” which is a real estate services business operated by “Redstone Consultancy Services Private Limited”.</p>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
